@@ -1,5 +1,4 @@
 import { Patient } from "./patient";
-
 export const PATIENTS: Patient[] = [
     {
         "id": 1,
