@@ -1,4 +1,4 @@
-import { Patient } from "./patient";
+import { Patient } from "../Entity/patient";
 export const PATIENTS: Patient[] = [
     {
         "id": 1,

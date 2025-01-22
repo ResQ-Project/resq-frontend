@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
-import { TableComponent } from './reusable/table/table.component';
-import { PATIENTS } from './patient/patient_details';
-
-
+import { RouterOutlet } from '@angular/router';
+import { MenubarComponent } from './menubar/menubar.component';
 
 @Component({
   selector: 'resq-frontend-root',
-  imports: [TableComponent ],
+  imports: [RouterOutlet,MenubarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  patients = PATIENTS;
+  
 }
