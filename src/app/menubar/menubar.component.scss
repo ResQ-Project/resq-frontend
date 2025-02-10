@@ -1,0 +1,50 @@
+.menubar-color{
+    background: #d5efef;
+}
+
+.menubar-height {
+    min-height: 60px; 
+}
+
+.menu-height{
+    font-size: 30px;
+}
+
+.menu-font{
+   font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #365679;
+    margin-left: 1px;
+    font-variant: small-caps;
+}
+ 
+
+.toolbar-logo {
+    height: 60px; 
+    margin: 0 1px; 
+}
+
+.container-bg{
+    background-color: #86b4c4;
+}
+
+.navbar-size{
+    width: 250px;  
+    border-radius: 0;
+}
+
+.custom-button{
+    display: flex;
+    justify-content: flex-start;
+    width:100%;
+    border-radius: 0;
+}
+
+.navlist-space{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+

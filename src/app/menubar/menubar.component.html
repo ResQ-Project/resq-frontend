@@ -1,1 +1,49 @@
-<p>menubar works!</p>
+<mat-toolbar class="menubar-color menubar-height ">
+    <button mat-icon-button (click)="drawer.toggle()" >
+        <mat-icon class="menu-height"> menu </mat-icon>    
+    </button>
+
+    <img src="https://i.pinimg.com/474x/51/cf/1f/51cf1f71aa4048218db978347a7da41c.jpg" alt="Logo" class="toolbar-logo">
+
+    <span class="menu-font">
+        RESQ
+    </span>
+
+</mat-toolbar>
+
+<mat-drawer-container autosize class="container-bg">
+    <mat-drawer #drawer opened="false" mode="side" position="start" class="navbar-size">
+        <mat-nav-list class="navlist-space" >
+            <mat-list-item>
+                <button mat-fab extended class="custom-button" routerLink="">
+                    <mat-icon>dashboard</mat-icon>
+                    Dashboard
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="patient-management">
+                    <mat-icon>people</mat-icon>
+                    Patient Management
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="resource-management">
+                    <mat-icon>healing</mat-icon>
+                    Resource Management
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="staff-management">
+                    <mat-icon>supervised_user_circle</mat-icon>
+                    Staff Management
+                </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center; min-height: 800px;"> 
+            <router-outlet></router-outlet>
+        </div> 
+    </mat-drawer-content>
+</mat-drawer-container>
+
