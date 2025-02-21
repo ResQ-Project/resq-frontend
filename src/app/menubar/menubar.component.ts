@@ -5,7 +5,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -17,7 +17,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
     MatIconModule, 
     MatSidenavModule, 
     MatListModule, 
-    RouterLink, 
+    RouterLink,
+    RouterLinkActive, 
     RouterOutlet,
     RouterModule,
     MatMenuModule,

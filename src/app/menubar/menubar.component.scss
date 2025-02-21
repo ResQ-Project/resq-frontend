@@ -1,9 +1,9 @@
 .menubar-color{
-    background: #d5efef;
-}
+    background: #e5dddd67;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
 
 .menubar-height {
-    min-height: 60px; 
+    min-height: 35px;
 }
 
 .menu-height{
@@ -26,7 +26,7 @@
 }
 
 .container-bg{
-    background-color: #86b4c4;
+    background-color: #c4e1ec;
 }
 
 .navbar-size{
@@ -46,5 +46,15 @@
     flex-direction: column;
     gap: 10px;
 }
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.active-link {
+    background-color: #90b1d3;
+    color: rgb(15, 9, 9) !important;
+    border-radius: 5px;
+  }
 
 
