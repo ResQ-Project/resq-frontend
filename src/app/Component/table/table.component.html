@@ -1,23 +1,34 @@
 <mat-card>
-    <mat-card-header></mat-card-header>
-    <mat-card-content fxLayout="row" fxLayoutWrap> 
-        <div fxFlex="100" style="overflow-x: auto;">
+    <mat-card-header> 
+      <div class="filter">
+        <mat-form-field class="filterheight">
+          <mat-label>Search</mat-label>
+          <mat-icon matPrefix>search </mat-icon>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search here..." />
+        </mat-form-field>
+      </div>
+    </mat-card-header>
 
-        <table mat-table [dataSource]="dataSource" class="mat-elavation-z6">
+    <mat-card-content fxLayout="row" fxLayoutWrap> 
+
+        <div class="table-container">
+
+        <table mat-table [dataSource]="dataSource" class="mat-elavation-z8" >
             <!-- Dynamically create column definitions -->
             <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
               <th mat-header-cell *matHeaderCellDef> {{ column.header }} </th>
+
               <td mat-cell *matCellDef="let element">
-                <ng-container *ngIF="column.columnDef !== 'actions'; else actionsTemplate">
+                <ng-container *ngIf="column.columnDef !== 'actions'; else actionsTemplate">
                     {{ column.cell(element) }}
                 </ng-container>
 
                 <ng-template #actionsTemplate>
                     <button mat-raised-button color="primary" >
-                      <mat-icon>Edit</mat-icon>
+                      <mat-icon>edit</mat-icon> Edit
                     </button>
                     <button mat-raised-button color="warn" >
-                      <mat-icon>Delete</mat-icon>
+                      <mat-icon>delete</mat-icon> Delete
                     </button>
                   </ng-template>
 
@@ -31,6 +42,9 @@
         </div>
 
         <mat-card-footer>
+
+          <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons> </mat-paginator>
+
         </mat-card-footer>
         
     </mat-card-content>

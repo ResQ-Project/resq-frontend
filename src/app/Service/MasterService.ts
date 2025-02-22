@@ -14,7 +14,7 @@ export class MasterService{
     constructor(private http:HttpClient){}
 
     GetPatient():Observable<Patient[]>{
-        return this.http.get<Patient[]>("http://localhost:8082/api/v1/patient");
+        return this.http.get<Patient[]>("http://localhost:3000/patient");
     }
 
     GetResource():Observable<Resource[]>{

@@ -5,10 +5,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { ColumnDefinition } from '../Model/ColumnDefinition';
 import { Patient } from '../Model/Patient';
 import { MasterService } from '../Service/MasterService';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'resq-frontend-patient-management',
-  imports: [MatPaginatorModule,MatSortModule,TableComponent],
+  imports: [MatPaginatorModule,MatSortModule,TableComponent,CommonModule],
   templateUrl: './patient-management.component.html',
   styleUrl: './patient-management.component.scss'
 })

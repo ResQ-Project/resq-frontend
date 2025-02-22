@@ -5,3 +5,22 @@ mat-card{
 button{
     margin: 2px;
 }
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  table{
+    white-space: nowrap;
+  }
+
+  .filter{
+    margin-bottom:2px;
+}
+
+.filterheight{
+    min-height: 32px;
+    width: 300px;
+}
