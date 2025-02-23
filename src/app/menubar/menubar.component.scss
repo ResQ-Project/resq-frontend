@@ -1,0 +1,60 @@
+.menubar-color{
+    background: #e5dddd67;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);}
+
+.menubar-height {
+    min-height: 35px;
+}
+
+.menu-height{
+    font-size: 30px;
+}
+
+.menu-font{
+   font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #365679;
+    margin-left: 1px;
+    font-variant: small-caps;
+}
+ 
+
+.toolbar-logo {
+    height: 60px; 
+    margin: 0 1px; 
+}
+
+.container-bg{
+    background-color: #c4e1ec;
+}
+
+.navbar-size{
+    width: 250px;  
+    border-radius: 0;
+}
+
+.custom-button{
+    display: flex;
+    justify-content: flex-start;
+    width:100%;
+    border-radius: 0;
+}
+
+.navlist-space{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.spacer{
+    flex: 1 1 auto;
+}
+
+.active-link {
+    background-color: #90b1d3;
+    color: rgb(15, 9, 9) !important;
+    border-radius: 5px;
+  }
+
+

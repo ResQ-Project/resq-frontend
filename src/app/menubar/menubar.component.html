@@ -1,0 +1,55 @@
+<mat-toolbar class="menubar-color menubar-height mat-elavation-z8" >
+    <button mat-icon-button (click)="drawer.toggle()" >
+        <mat-icon class="menu-height"> menu </mat-icon>    
+    </button>
+
+    <span class="menu-font">
+        RESQ
+    </span>
+
+    <span class="spacer"></span>
+
+    <!--
+    <img src="https://i.pinimg.com/474x/51/cf/1f/51cf1f71aa4048218db978347a7da41c.jpg" alt="Logo" class="toolbar-logo"> -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCSh4e0_PE6Jw3Nhki3eKDatGFxfwb41FOg&s" alt="Logo" class="toolbar-logo">
+
+  
+
+</mat-toolbar>
+
+<mat-drawer-container autosize class="container-bg">
+    <mat-drawer #drawer opened="false" mode="side" position="start" class="navbar-size">
+        <mat-nav-list class="navlist-space" >
+            <mat-list-item>
+                <button mat-fab extended class="custom-button" routerLink="" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon>dashboard</mat-icon>
+                    Dashboard
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="patient-management" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon>people</mat-icon>
+                    Patient Management
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="resource-management" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon>healing</mat-icon>
+                    Resource Management
+                </button>
+            </mat-list-item>
+            <mat-list-item >
+                <button mat-fab extended class="custom-button" routerLink="staff-management" routerLinkActive="active-link"  [routerLinkActiveOptions]="{ exact: true }">
+                    <mat-icon>supervised_user_circle</mat-icon>
+                    Staff Management
+                </button>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center; min-height: 800px;"> 
+            <router-outlet></router-outlet>
+        </div> 
+    </mat-drawer-content>
+</mat-drawer-container>
+

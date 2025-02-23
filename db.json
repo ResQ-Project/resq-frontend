@@ -1,0 +1,50 @@
+{
+    "patient":[
+    {
+        "national_id": "1111v",
+        "first_name": "John",
+        "last_name": "Doe",
+        "age": "35",
+        "gender":"Female",
+        "address":"Wales Road, London",
+        "contact_number":"09425083",
+        "ward_number":"42-A",
+        "criticality":"High",
+        "admission_status":"true",
+        "assigned_doctor": "Dr. Potter",
+        "resourceId": "Oxygen Mask",
+        "allocatedUnits": "5"
+    },
+    {
+        "national_id": "1121v",
+        "first_name": "ABC",
+        "last_name": "DEF",
+        "age": "40",
+        "gender":"Female",
+        "address":"Colombo, Sri Lanka",
+        "contact_number":"09425083",
+        "ward_number":"42-A",
+        "criticality":"High",
+        "admission_status":"true",
+        "assigned_doctor": "Dr. Potter",
+        "resourceId": "Oxygen Mask",
+        "allocatedUnits": "5"
+    },
+    {
+        "national_id": "1121v",
+        "first_name": "ABC",
+        "last_name": "DEF",
+        "age": "40",
+        "gender":"Female",
+        "address":"Colombo, Sri Lanka",
+        "contact_number":"09425083",
+        "ward_number":"42-A",
+        "criticality":"High",
+        "admission_status":"true",
+        "assigned_doctor": "Dr. Potter",
+        "resourceId": "Oxygen Mask",
+        "allocatedUnits": "5"
+    }
+    
+]
+}
