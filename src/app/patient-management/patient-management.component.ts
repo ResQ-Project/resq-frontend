@@ -6,10 +6,11 @@ import { ColumnDefinition } from '../Model/ColumnDefinition';
 import { Patient } from '../Model/Patient';
 import { MasterService } from '../Service/MasterService';
 import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../Component/button/button.component';
 
 @Component({
   selector: 'resq-frontend-patient-management',
-  imports: [MatPaginatorModule,MatSortModule,TableComponent,CommonModule],
+  imports: [MatPaginatorModule,MatSortModule,TableComponent,CommonModule,ButtonComponent],
   templateUrl: './patient-management.component.html',
   styleUrl: './patient-management.component.scss'
 })

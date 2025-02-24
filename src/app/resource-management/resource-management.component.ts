@@ -5,10 +5,11 @@ import { TableComponent } from '../Component/table/table.component';
 import { ColumnDefinition } from '../Model/ColumnDefinition';
 import { Resource } from '../Model/Resource';
 import { MasterService } from '../Service/MasterService';
+import { ButtonComponent } from '../Component/button/button.component';
 
 @Component({
   selector: 'resq-frontend-resource-management',
-  imports: [MatPaginatorModule,MatSortModule,TableComponent],
+  imports: [MatPaginatorModule,MatSortModule,TableComponent,ButtonComponent],
   templateUrl: './resource-management.component.html',
   styleUrl: './resource-management.component.scss'
 })

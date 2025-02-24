@@ -1,5 +1,7 @@
 <mat-card>
-    <mat-card-header> 
+
+    <mat-card-header class="header"> 
+
       <div class="filter">
         <mat-form-field class="filterheight">
           <mat-label>Search</mat-label>
@@ -7,6 +9,12 @@
           <input matInput (keyup)="applyFilter($event)" placeholder="Search here..." />
         </mat-form-field>
       </div>
+
+      <div class="addButton">
+        <ng-content select="[table-actions]" ></ng-content>
+      </div>
+      
+
     </mat-card-header>
 
     <mat-card-content fxLayout="row" fxLayoutWrap> 

@@ -5,10 +5,11 @@ import { TableComponent } from '../Component/table/table.component';
 import { ColumnDefinition } from '../Model/ColumnDefinition';
 import { Staff } from '../Model/Staff';
 import { MasterService } from '../Service/MasterService';
+import { ButtonComponent } from '../Component/button/button.component';
 
 @Component({
   selector: 'resq-frontend-staff-management',
-  imports: [MatPaginatorModule,MatSortModule,TableComponent],
+  imports: [MatPaginatorModule,MatSortModule,TableComponent, ButtonComponent],
   templateUrl: './staff-management.component.html',
   styleUrl: './staff-management.component.scss'
 })

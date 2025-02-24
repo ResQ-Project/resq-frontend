@@ -24,3 +24,13 @@ button{
     min-height: 32px;
     width: 300px;
 }
+
+.header{
+  display: flex;
+  align-items:center;
+}
+
+.addButton{
+  margin-left: auto;
+  margin-bottom: 28px;
+}
