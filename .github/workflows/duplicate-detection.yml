@@ -79,7 +79,7 @@ jobs:
       # Upload the output CSV as an artifact
       - name: Upload duplicate_ranking.csv
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated to v4
         with:
           name: duplicate_ranking
           path: duplicate_ranking.csv
