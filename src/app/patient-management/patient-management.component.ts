@@ -7,10 +7,13 @@ import { Patient } from '../Model/Patient';
 import { MasterService } from '../Service/MasterService';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../Component/button/button.component';
+import { FormComponent } from '../Component/form/form.component';
+import { FormFieldComponent } from '../Component/form-field/form-field.component';
+import { HalfFormFieldComponent } from '../Component/half-form-field/half-form-field.component';
 
 @Component({
   selector: 'resq-frontend-patient-management',
-  imports: [MatPaginatorModule,MatSortModule,TableComponent,CommonModule,ButtonComponent],
+  imports: [MatPaginatorModule,MatSortModule,TableComponent,CommonModule,ButtonComponent, FormComponent, FormFieldComponent, HalfFormFieldComponent],
   templateUrl: './patient-management.component.html',
   styleUrl: './patient-management.component.scss'
 })
