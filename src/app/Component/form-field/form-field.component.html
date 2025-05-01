@@ -1,4 +1,15 @@
-<mat-form-field class="formatting " > 
+<!-- <mat-form-field class="formatting " > 
     <mat-label> {{label}} </mat-label>
     <input matInput>
 </mat-form-field>
+-->
+
+<mat-form-field appearance="fill" form-field-actions class="formatting">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [value]="value"
+      (input)="onInput($event)"
+      (blur)="onTouched()"
+      [disabled]="disabled">
+  </mat-form-field>

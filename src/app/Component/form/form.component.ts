@@ -6,10 +6,11 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'resq-frontend-form',
-  imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatChipsModule, MatRadioModule, MatSelectModule, MatCardModule],
+  imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatChipsModule, MatRadioModule, MatSelectModule, MatCardModule, CommonModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })

@@ -1,0 +1,58 @@
+<resq-frontend-form title="Patient Admission Form" (ngSubmit)="onSubmit()" class="form">
+
+            <resq-frontend-select-options
+            form-field-actions
+            label="Ward Number"
+            [options]="wardNumberOptions"
+            formControlName="wardNumber">
+            </resq-frontend-select-options>
+
+        <resq-frontend-form-field form-field-actions label="NIC" formControlName="nic"></resq-frontend-form-field>
+    
+        <resq-frontend-form-field form-field-actions label="First Name" formControlName="firstName"></resq-frontend-form-field>
+        
+        <resq-frontend-form-field form-field-actions label="Last Name" formControlName="lastName"></resq-frontend-form-field>
+    
+        <resq-frontend-form-field form-field-actions label="Age" formControlName="age"></resq-frontend-form-field>
+
+        <resq-frontend-select-options
+        form-field-actions
+        label="Gender"
+        [options]="genderOptions"
+        formControlName="gender">
+        </resq-frontend-select-options>
+
+        <resq-frontend-form-field form-field-actions label="Address" formControlName="address"></resq-frontend-form-field>
+        <resq-frontend-form-field form-field-actions label="Contact No" formControlName="contactNo"></resq-frontend-form-field>
+    
+        <resq-frontend-select-options
+        form-field-actions
+        label="Criticality"
+        [options]="criticalityOptions"
+        formControlName="criticality">
+        </resq-frontend-select-options>
+
+        
+
+        <!-- <resq-frontend-drop-down
+        form-field-actions
+        label="Admission Status"
+        apiEndpoint="admission-status"
+        (selectionChange)="onAdmissionStatusChange($event)">
+        </resq-frontend-drop-down>
+    -->
+
+        <resq-frontend-drop-down
+            form-field-actions
+            label="Assigned Doctors"
+            apiEndpoint="doctors"
+            (selectionChange)="onAssignedDoctorChange($event)">
+        </resq-frontend-drop-down>
+    
+        <resq-frontend-form-field form-field-actions label="Resource ID" formControlName="resourceId"></resq-frontend-form-field>
+    
+        <resq-frontend-form-field form-field-actions label="Allocated Units" formControlName="allocatedUnits"></resq-frontend-form-field>
+        
+        <button mat-raised-button color="primary" type="submit" [disabled]="patientForm.invalid">Submit</button>
+
+</resq-frontend-form>

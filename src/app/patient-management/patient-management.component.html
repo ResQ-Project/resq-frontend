@@ -1,18 +1,41 @@
-
+<!---
 <resq-frontend-table [dataSource]="patientlist" [columns]="columns">
     <resq-frontend-button table-actions label="Add Patient"> </resq-frontend-button>
 </resq-frontend-table>
 
 
-<resq-frontend-form title="Patient Admission Form"> 
+<resq-frontend-patient-admission > </resq-frontend-patient-admission>
+-->
 
-        <resq-frontend-form-field form-field-actions label="NIC"   > </resq-frontend-form-field>
+<!-- src/app/patient-management/patient-management.component.html -->
 
-        <resq-frontend-half-form-field form-field-actions label="First Name"> </resq-frontend-half-form-field>
-        <resq-frontend-half-form-field form-field-actions label="Last Name"> </resq-frontend-half-form-field>
-       
-        <resq-frontend-form-field form-field-actions label="Age"  ></resq-frontend-form-field>
-        <resq-frontend-form-field form-field-actions label="Address" ></resq-frontend-form-field>
-        <resq-frontend-form-field form-field-actions label="Contact No"  ></resq-frontend-form-field>
-        
-</resq-frontend-form>
+<div class="patient-management-container">
+    
+    <!-- Patient table -->
+    <resq-frontend-table
+      [dataSource]="patientList"
+      [columns]="columns">
+
+            <resq-frontend-button table-actions
+            label="Add Patient"
+            (click)="showAdmissionForm()">
+            </resq-frontend-button>
+
+    </resq-frontend-table>
+  
+  
+    <!-- Patient admission form -->
+    <resq-frontend-patient-admission
+      *ngIf="showForm"
+      (patientAdded)="onPatientAdded($event)">
+    </resq-frontend-patient-admission>
+
+    <!-- Dropdown for filtering by criticality 
+    <resq-frontend-drop-down
+      label="Filter by Criticality"
+      apiEndpoint="criticality"
+      (selectionChange)="onCriticalityFilterChange($event)">
+    </resq-frontend-drop-down>
+  -->
+    
+  </div>

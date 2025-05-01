@@ -46,5 +46,12 @@
         "allocatedUnits": "5"
     }
     
-]
+],
+
+"Doctors": [
+    { "value": "1", "display": "Amal" },
+    { "value": "2", "display": "Kamal" },
+    { "value": "3", "display": "Nimal" }
+  ]
+
 }
