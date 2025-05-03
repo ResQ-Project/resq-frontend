@@ -77,6 +77,11 @@ export class PatientManagementComponent implements OnInit {
       this.showForm = !this.showForm;
     }
 
+    closeForm() {
+      this.showForm = !this.showForm;
+    }
+    
+
     
     onPatientAdded(patient: Patient) {
       this.patientList = [...this.patientList, patient];

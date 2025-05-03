@@ -1,7 +1,6 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { FormComponent } from '../Component/form/form.component';
 import { FormFieldComponent } from '../Component/form-field/form-field.component';
-import { HalfFormFieldComponent } from '../Component/half-form-field/half-form-field.component';
 import { DropDownComponent } from '../Component/drop-down/drop-down.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -15,8 +14,7 @@ import { SelectOptionsComponent } from '../Component/select-options/select-optio
   selector: 'resq-frontend-patient-admission',
   imports: [
     FormComponent, 
-    FormFieldComponent, 
-    HalfFormFieldComponent, 
+    FormFieldComponent,  
     DropDownComponent, 
     ReactiveFormsModule,
     CommonModule,
