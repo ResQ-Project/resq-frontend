@@ -1,11 +1,19 @@
 <resq-frontend-form title="Patient Admission Form" (ngSubmit)="onSubmit()" class="form">
 
-            <resq-frontend-select-options
+        <resq-frontend-radio-button
+        form-field-actions
+        label="Patient Status"
+        [options]="statusOptions"
+        formControlName="admissionStatus"
+        (selectionChange)="onStatusChange($event)"
+        ></resq-frontend-radio-button>
+
+        <resq-frontend-select-options
             form-field-actions
             label="Ward Number"
             [options]="wardNumberOptions"
             formControlName="wardNumber">
-            </resq-frontend-select-options>
+        </resq-frontend-select-options>
 
         <resq-frontend-form-field form-field-actions label="NIC" formControlName="nic"></resq-frontend-form-field>
     
@@ -24,6 +32,14 @@
 
         <resq-frontend-form-field form-field-actions label="Address" formControlName="address"></resq-frontend-form-field>
         <resq-frontend-form-field form-field-actions label="Contact No" formControlName="contactNo"></resq-frontend-form-field>
+
+        
+        <resq-frontend-drop-down
+            form-field-actions
+            label="Assigned Doctors"
+            apiEndpoint="doctors"
+            (selectionChange)="onAssignedDoctorChange($event)">
+        </resq-frontend-drop-down>
     
         <resq-frontend-select-options
         form-field-actions
@@ -33,21 +49,6 @@
         </resq-frontend-select-options>
 
         
-
-        <!-- <resq-frontend-drop-down
-        form-field-actions
-        label="Admission Status"
-        apiEndpoint="admission-status"
-        (selectionChange)="onAdmissionStatusChange($event)">
-        </resq-frontend-drop-down>
-    -->
-
-        <resq-frontend-drop-down
-            form-field-actions
-            label="Assigned Doctors"
-            apiEndpoint="doctors"
-            (selectionChange)="onAssignedDoctorChange($event)">
-        </resq-frontend-drop-down>
     
         <resq-frontend-form-field form-field-actions label="Resource ID" formControlName="resourceId"></resq-frontend-form-field>
     

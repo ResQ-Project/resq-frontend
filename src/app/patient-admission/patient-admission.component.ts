@@ -9,6 +9,8 @@ import { DropdownOption } from '../Model/DropDownOption';
 import { Patient } from '../Model/Patient';
 import { MatButtonModule } from '@angular/material/button';
 import { SelectOptionsComponent } from '../Component/select-options/select-options.component';
+import { RadioButtonComponent } from '../Component/radio-button/radio-button.component';
+import { RadioOption } from '../Model/RadioOption';
 
 @Component({
   selector: 'resq-frontend-patient-admission',
@@ -19,7 +21,8 @@ import { SelectOptionsComponent } from '../Component/select-options/select-optio
     ReactiveFormsModule,
     CommonModule,
     MatButtonModule,
-    SelectOptionsComponent
+    SelectOptionsComponent,
+    RadioButtonComponent
   ],
   templateUrl: './patient-admission.component.html',
   styleUrl: './patient-admission.component.scss'
@@ -41,6 +44,14 @@ export class PatientAdmissionComponent implements OnInit {
   wardNumberOptions = ['1A', '1B', '2A', '2B']
 
   criticalityOptions = ['High', 'Medium', 'Low']
+
+  statusOptions: RadioOption[] = [
+    { value: 'admitted', label: 'Admitted' },
+    { value: 'discharged', label: 'Discharged' },
+  ];
+
+  selectedStatus: string = this.statusOptions[0].value;
+
 
   @Output() patientAdded = new EventEmitter<Patient>(); // Emit new patient
 
@@ -87,6 +98,10 @@ export class PatientAdmissionComponent implements OnInit {
   
   onAssignedDoctorChange(value: string) {
     this.patientForm.get('assignedDoctor')?.setValue(value);
+  }
+
+  onStatusChange(value: string) {
+    this.patientForm.get('admissionStatus')?.setValue(value);
   }
 
   onSubmit() {
