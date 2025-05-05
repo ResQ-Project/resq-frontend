@@ -1,4 +1,4 @@
-<resq-frontend-form title="Patient Admission Form" (ngSubmit)="onSubmit()" class="form">
+<resq-frontend-form title="Patient Admission Form" [formGroup]="patientForm" (ngSubmit)="onSubmit()" class="form">
 
         <resq-frontend-radio-button
         form-field-actions
@@ -53,7 +53,9 @@
         <resq-frontend-form-field form-field-actions label="Resource ID" formControlName="resourceId"></resq-frontend-form-field>
     
         <resq-frontend-form-field form-field-actions label="Allocated Units" formControlName="allocatedUnits"></resq-frontend-form-field>
-        
-        <button mat-raised-button color="primary" type="submit" [disabled]="patientForm.invalid">Submit</button>
+
+        <div class="form-buttons" form-field-actions>
+            <resq-frontend-form-buttons  (submitClicked)="onSubmit()" (closeClicked)="onClose()"></resq-frontend-form-buttons>
+        </div>
 
 </resq-frontend-form>

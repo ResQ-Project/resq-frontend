@@ -12,25 +12,11 @@
             </resq-frontend-button>       
     </resq-frontend-table>
   
-  
-    <!-- Patient admission form - close button ekk danna
-    <div class="modal-container" *ngIf="showForm">
-      <div class="modal-content">
-        <resq-frontend-patient-admission
-          (patientAdded)="onPatientAdded($event)">
-        </resq-frontend-patient-admission>
-      </div>
-    </div>
-  --> 
     <!-- Patient admission form -->
     <ng-container *ngIf="showForm">
-      <div class="modal-backdrop" (click)="closeForm()"></div>
-
+      <div class="modal-backdrop"></div>
       <div class="modal-container">
         <div class="modal-content">
-          <!-- Optional close button -->
-          <!-- <button class="close-button" (click)="closeForm()"> × </button> -->
-
           <resq-frontend-patient-admission
             (patientAdded)="onPatientAdded($event)">
           </resq-frontend-patient-admission>

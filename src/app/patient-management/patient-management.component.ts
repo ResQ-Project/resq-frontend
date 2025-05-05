@@ -45,10 +45,6 @@ export class PatientManagementComponent implements OnInit {
   ]
 
   constructor(private service:MasterService){}
-    /*this.service.GetPatient().subscribe(res=>{
-      this.patientlist = res;
-    })
-   }*/
 
     ngOnInit() {
       this.fetchPatients();
@@ -76,16 +72,14 @@ export class PatientManagementComponent implements OnInit {
     showAdmissionForm() {
       this.showForm = !this.showForm;
     }
-
-    closeForm() {
-      this.showForm = !this.showForm;
-    }
-    
-
     
     onPatientAdded(patient: Patient) {
       this.patientList = [...this.patientList, patient];
-      this.showForm = false; // Hide form after submission
+      //this.showForm = false; // Hide form after submission
+    }
+
+    onClose() {
+      this.showForm = false;
     }
 
 }

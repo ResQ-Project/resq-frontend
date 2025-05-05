@@ -1,7 +1,17 @@
 
 mat-card{
     text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
 }
+
+mat-card-content {
+    overflow-y: auto;
+    flex: 1;
+    padding: 16px;
+  }
 
 mat-card-header {
     display: flex;

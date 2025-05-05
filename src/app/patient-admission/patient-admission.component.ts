@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SelectOptionsComponent } from '../Component/select-options/select-options.component';
 import { RadioButtonComponent } from '../Component/radio-button/radio-button.component';
 import { RadioOption } from '../Model/RadioOption';
+import { FormButtonsComponent } from '../Component/form-buttons/form-buttons.component';
 
 @Component({
   selector: 'resq-frontend-patient-admission',
@@ -22,7 +23,8 @@ import { RadioOption } from '../Model/RadioOption';
     CommonModule,
     MatButtonModule,
     SelectOptionsComponent,
-    RadioButtonComponent
+    RadioButtonComponent,
+    FormButtonsComponent
   ],
   templateUrl: './patient-admission.component.html',
   styleUrl: './patient-admission.component.scss'
@@ -53,7 +55,8 @@ export class PatientAdmissionComponent implements OnInit {
   selectedStatus: string = this.statusOptions[0].value;
 
 
-  @Output() patientAdded = new EventEmitter<Patient>(); // Emit new patient
+  @Output() patientAdded = new EventEmitter<Patient>();
+  @Output() closeClicked = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder , private masterService: MasterService) {
     this.patientForm = this.fb.group({
@@ -131,5 +134,9 @@ export class PatientAdmissionComponent implements OnInit {
         }
       });
     }
+  }
+
+  onClose() {
+    this.closeClicked.emit();
   }
 }
