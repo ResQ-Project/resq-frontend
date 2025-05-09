@@ -1,0 +1,33 @@
+<mat-form-field appearance="fill" form-field-actions class="hospital-resource-chip-list">
+    <mat-label>{{ label }}</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Resource selection" [disabled]="isLoading || !!error">
+      <mat-chip-row *ngFor="let resource of selectedResources" (removed)="remove(resource)">
+        {{ resource }}
+        <button matChipRemove [attr.aria-label]="'remove ' + resource" [disabled]="isLoading || !!error">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <mat-chip-row *ngIf="isLoading" [removable]="false">
+        Loading...
+      </mat-chip-row>
+      <mat-chip-row *ngIf="error" [removable]="false">
+        {{ error }}
+      </mat-chip-row>
+    </mat-chip-grid>
+    <input
+      name="currentResource"
+      placeholder="Add resource..."
+      #resourceInput
+      [(ngModel)]="currentResource"
+      [matChipInputFor]="chipGrid"
+      [matAutocomplete]="auto"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+      [disabled]="isLoading || !!error"
+    />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event); resourceInput.value = ''">
+      <mat-option *ngFor="let resource of filteredResources | async" [value]="resource">
+        {{ resource }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>

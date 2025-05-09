@@ -75,7 +75,7 @@ export class PatientManagementComponent implements OnInit {
     
     onPatientAdded(patient: Patient) {
       this.patientList = [...this.patientList, patient];
-      //this.showForm = false; // Hide form after submission
+      this.showForm = false; // Hide form after submission
     }
 
     onClose() {

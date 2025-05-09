@@ -50,9 +50,16 @@
 
         
     
-        <resq-frontend-form-field form-field-actions label="Resource ID" formControlName="resourceId"></resq-frontend-form-field>
+        <resq-frontend-form-field form-field-actions label="Resource" formControlName="resourceId"></resq-frontend-form-field>
+
+        <resq-frontend-chips-autocomplete
+            form-field-actions
+            label="Hospital Resources"
+            apiEndpoint="resources"
+            (selectionChange)="onResourcesChange($event)">
+        </resq-frontend-chips-autocomplete>
     
-        <resq-frontend-form-field form-field-actions label="Allocated Units" formControlName="allocatedUnits"></resq-frontend-form-field>
+        <resq-frontend-form-field form-field-actions label="Allocated Number of Units" formControlName="allocatedUnits"></resq-frontend-form-field>
 
         <div class="form-buttons" form-field-actions>
             <resq-frontend-form-buttons  (submitClicked)="onSubmit()" (closeClicked)="onClose()"></resq-frontend-form-buttons>

@@ -12,6 +12,7 @@ import { SelectOptionsComponent } from '../Component/select-options/select-optio
 import { RadioButtonComponent } from '../Component/radio-button/radio-button.component';
 import { RadioOption } from '../Model/RadioOption';
 import { FormButtonsComponent } from '../Component/form-buttons/form-buttons.component';
+import { ChipsAutocompleteComponent } from '../chips-autocomplete/chips-autocomplete.component';
 
 @Component({
   selector: 'resq-frontend-patient-admission',
@@ -24,7 +25,8 @@ import { FormButtonsComponent } from '../Component/form-buttons/form-buttons.com
     MatButtonModule,
     SelectOptionsComponent,
     RadioButtonComponent,
-    FormButtonsComponent
+    FormButtonsComponent,
+    ChipsAutocompleteComponent
   ],
   templateUrl: './patient-admission.component.html',
   styleUrl: './patient-admission.component.scss'
@@ -107,6 +109,10 @@ export class PatientAdmissionComponent implements OnInit {
     this.patientForm.get('admissionStatus')?.setValue(value);
   }
 
+  onResourcesChange(value: any) {
+    this.patientForm.get('resourceId')?.setValue(value);
+  }
+
   onSubmit() {
     if (this.patientForm.valid) {
       const patient: Patient = {
@@ -139,4 +145,5 @@ export class PatientAdmissionComponent implements OnInit {
   onClose() {
     this.closeClicked.emit();
   }
+
 }
