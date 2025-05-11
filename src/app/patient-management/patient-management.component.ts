@@ -39,8 +39,8 @@ export class PatientManagementComponent implements OnInit {
     { columnDef: 'criticality', header: 'Criticality', cell: (element: Patient) => `${element.criticality}` },
     { columnDef: 'admission_status', header: 'Admission Status', cell: (element: Patient) => `${element.admission_status}` },
     { columnDef: 'assigned_doctor', header: 'Assigned Doctor', cell: (element: Patient) => `${element.assigned_doctor}` },
-    { columnDef: 'resourceId', header: 'Resource ID', cell: (element: Patient) => `${element.resourceId}` },
-    { columnDef: 'allocatedUnits', header: 'Resource Count', cell: (element: Patient) => `${element.allocatedUnits}` },
+    // { columnDef: 'resourceId', header: 'Resource ID', cell: (element: Patient) => `${element.resourceId}` },
+    // { columnDef: 'allocatedUnits', header: 'Resource Count', cell: (element: Patient) => `${element.allocatedUnits}` },
     { columnDef: 'actions', header: 'Actions', cell: () => '' },
   ]
 

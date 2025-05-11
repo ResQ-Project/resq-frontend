@@ -20,3 +20,17 @@
     border-top: 1px solid #e0e0e09e;
   }
 
+.resources-section {
+    margin-top: 1rem;
+}
+
+.resource-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.resource-select {
+    min-width: 200px;
+}

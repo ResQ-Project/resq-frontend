@@ -1,149 +1,150 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
-import { FormComponent } from '../Component/form/form.component';
-import { FormFieldComponent } from '../Component/form-field/form-field.component';
-import { DropDownComponent } from '../Component/drop-down/drop-down.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MasterService } from '../Service/MasterService';
-import { DropdownOption } from '../Model/DropDownOption';
-import { Patient } from '../Model/Patient';
+import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { SelectOptionsComponent } from '../Component/select-options/select-options.component';
-import { RadioButtonComponent } from '../Component/radio-button/radio-button.component';
-import { RadioOption } from '../Model/RadioOption';
-import { FormButtonsComponent } from '../Component/form-buttons/form-buttons.component';
-import { ChipsAutocompleteComponent } from '../chips-autocomplete/chips-autocomplete.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
+import { MasterService } from '../Service/MasterService';
 
 @Component({
   selector: 'resq-frontend-patient-admission',
+  standalone: true,
   imports: [
-    FormComponent, 
-    FormFieldComponent,  
-    DropDownComponent, 
-    ReactiveFormsModule,
     CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     MatButtonModule,
-    SelectOptionsComponent,
-    RadioButtonComponent,
-    FormButtonsComponent,
-    ChipsAutocompleteComponent
+    MatIconModule,
+    MatCardModule,
+    MatDividerModule,
   ],
   templateUrl: './patient-admission.component.html',
-  styleUrl: './patient-admission.component.scss'
+  styleUrls: ['./patient-admission.component.scss'],
 })
-
 export class PatientAdmissionComponent implements OnInit {
-  patientForm: FormGroup;
+  patientForm!: FormGroup;
+  doctorsOptions: any[] = [];
+  resourceOptions: any[] = [];
 
-  doctorsOptions: DropdownOption[] = [];
-
-  criticallityOptions = [
-    { "value": "low", "display": "Low" },
-    { "value": "medium", "display": "Medium" },
-    { "value": "high", "display": "High" }
-  ]
-
-  genderOptions = ['Male', 'Female' ]
-
-  wardNumberOptions = ['1A', '1B', '2A', '2B']
-
-  criticalityOptions = ['High', 'Medium', 'Low']
-
-  statusOptions: RadioOption[] = [
-    { value: 'admitted', label: 'Admitted' },
-    { value: 'discharged', label: 'Discharged' },
+  criticalityOptions = ['Critical', 'Medium', 'Low'];
+  genderOptions = ['Male', 'Female'];
+  wardNumberOptions = [1,2,3,4];
+  statusOptions = [
+    { value: true, label: 'Admitted' },
+    { value: false, label: 'Discharged' },
   ];
 
-  selectedStatus: string = this.statusOptions[0].value;
-
-
-  @Output() patientAdded = new EventEmitter<Patient>();
+  @Output() patientAdded = new EventEmitter<any>();
   @Output() closeClicked = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder , private masterService: MasterService) {
+  constructor(private fb: FormBuilder, private masterService: MasterService) { }
+
+  ngOnInit(): void {
     this.patientForm = this.fb.group({
-      nic: ['', Validators.required],
+      nic: [null, Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      age: ['', [Validators.required, Validators.min(0)]],
+      age: [null, [Validators.required, Validators.min(0)]],
       address: ['', Validators.required],
       contactNo: ['', Validators.required],
       criticality: ['', Validators.required],
       gender: ['', Validators.required],
-      wardNumber: ['', Validators.required],
+      wardNumber: [null, Validators.required],
       admissionStatus: ['', Validators.required],
       assignedDoctor: ['', Validators.required],
+      resources: this.fb.array([]),
+    });
+
+    this.fetchDoctors();
+    this.fetchResources();
+  }
+
+  get resources(): FormArray {
+    return this.patientForm.get('resources') as FormArray;
+  }
+
+  addResource(): void {
+    const resourceGroup = this.fb.group({
       resourceId: ['', Validators.required],
-      allocatedUnits: [0, [Validators.required, Validators.min(0)]]
+      allocatedUnits: [1, [Validators.required, Validators.min(1)]],
+    });
+    this.resources.push(resourceGroup);
+  }
+
+  removeResource(index: number): void {
+    this.resources.removeAt(index);
+  }
+
+  fetchDoctors(): void {
+    this.masterService.getDoctorsOptions().subscribe({
+      next: (res) => {
+        this.doctorsOptions = res.data;
+      },
+      error: (err) => console.error('Error fetching doctors:', err),
     });
   }
 
-  ngOnInit() {
-    this.masterService.getDoctorsOptions().subscribe({
-      next: (options) => {
-        this.doctorsOptions = options;
+  fetchResources(): void {
+    this.masterService.getResourcesOptions().subscribe({
+      next: (res) => {
+        this.resourceOptions = res.data.map((item: any) => ({
+          value: item.resource_id,
+          display: item.category,
+        }));
+      },
+      error: (err) => console.error('Error fetching resources:', err),
+    });
+  }
+
+  onSubmit(): void {
+    if (this.patientForm.invalid) {
+      this.patientForm.markAllAsTouched();
+      return;
+    }
+
+    const formValue = this.patientForm.value;
+
+    const payload = {
+      national_id: formValue.nic,
+      first_name: formValue.firstName,
+      last_name: formValue.lastName,
+      age: formValue.age,
+      address: formValue.address,
+      contact_number: formValue.contactNo,
+      criticality: formValue.criticality.toLowerCase(),
+      gender: formValue.gender,
+      ward_number: formValue.wardNumber,
+      admission_status: formValue.admissionStatus,
+      assigned_doctor: formValue.assignedDoctor,
+      resources: formValue.resources.map((resource: any) => ({
+        resourceId: resource.resourceId,
+        allocatedUnits: resource.allocatedUnits,
+      })),
+    };
+
+    console.log('Form Data:', payload);
+    this.patientAdded.emit(payload);
+
+    this.masterService.addPatient(payload).subscribe({
+      next: (response) => {
+        console.log('Patient successfully added:', response);
+        this.patientAdded.emit(response); // optionally emit response
       },
       error: (error) => {
-        console.error('Error fetching doctor options:', error);
+        console.error('Error submitting patient data:', error);
       }
     });
+
   }
 
-  onCriticalityChange(value: string) {
-    this.patientForm.get('criticality')?.setValue(value);
-  }
-
-  onGenderChange(value: string) {
-    this.patientForm.get('gender')?.setValue(value);
-  }
-  
-  onAdmissionStatusChange(value: string) {
-    this.patientForm.get('admissionStatus')?.setValue(value);
-  }
-  
-  onAssignedDoctorChange(value: string) {
-    this.patientForm.get('assignedDoctor')?.setValue(value);
-  }
-
-  onStatusChange(value: string) {
-    this.patientForm.get('admissionStatus')?.setValue(value);
-  }
-
-  onResourcesChange(value: any) {
-    this.patientForm.get('resourceId')?.setValue(value);
-  }
-
-  onSubmit() {
-    if (this.patientForm.valid) {
-      const patient: Patient = {
-        national_id: this.patientForm.get('nic')?.value,
-        first_name: this.patientForm.get('firstName')?.value,
-        last_name: this.patientForm.get('lastName')?.value,
-        age: this.patientForm.get('age')?.value,
-        address: this.patientForm.get('address')?.value,
-        contact_number: this.patientForm.get('contactNo')?.value,
-        criticality: this.patientForm.get('criticality')?.value,
-        gender: this.patientForm.get('gender')?.value,
-        ward_number: this.patientForm.get('wardNumber')?.value,
-        admission_status: this.patientForm.get('admissionStatus')?.value,
-        assigned_doctor: this.patientForm.get('assignedDoctor')?.value,
-        resourceId: this.patientForm.get('resourceId')?.value,
-        allocatedUnits: this.patientForm.get('allocatedUnits')?.value
-      };
-      this.masterService.addPatient(patient).subscribe({
-        next: (response) => {
-          this.patientAdded.emit(response); // Emit the new patient
-          this.patientForm.reset(); // Reset form
-        },
-        error: (error) => {
-          console.error('Error adding patient:', error);
-        }
-      });
-    }
-  }
-
-  onClose() {
+  onClose(): void {
     this.closeClicked.emit();
   }
-
 }

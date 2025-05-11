@@ -34,11 +34,10 @@ export class MasterService{
     }
 
     addPatient(patient: Patient): Observable<Patient> {
-        return this.http.post<Patient>(`${this.baseUrl}/patient`, patient); //Submit button - form
+        return this.http.post<Patient>(`${this.baseUrl}/patientservice/api/v1/patient/savePatient`, patient); //Submit button - form
       }
 
-    getHospitalResources(endpoint: string): Observable<string[]> {
-        return this.http.get<string[]>(`${this.baseUrl}/Doctors`); //Add Resources to the form
-      }
-
+    getResourcesOptions(): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}/resourceservice/api/v1/resource/getAllResources`); //dropdown options for assigned doctor
+    }
 }

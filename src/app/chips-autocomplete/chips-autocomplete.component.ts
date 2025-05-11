@@ -51,7 +51,7 @@ export class ChipsAutocompleteComponent {
   ngOnInit(): void {
     if (this.apiEndpoint) {
       this.isLoading = true;
-      this.masterService.getHospitalResources(this.apiEndpoint).subscribe({
+      this.masterService.getResourcesOptions().subscribe({
         next: (resources: any) => {
           console.log(resources)
           this.allResources = ['apple', 'orange'];
