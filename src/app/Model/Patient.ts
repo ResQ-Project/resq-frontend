@@ -8,9 +8,9 @@ export interface Patient{
     contact_number:string,
     ward_number:string,
     criticality:string,
-    admission_status:boolean,
+    admission_status:string,
     assigned_doctor: string,
     resourceId: string,
-    allocatedUnits: string
+    allocatedUnits: number
 
 }

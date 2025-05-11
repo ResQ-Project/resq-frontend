@@ -35,7 +35,7 @@ export class DropDownComponent implements OnInit {
         next: (data: DropdownOption[]) => {
           this.options = data || []; // Ensure options is always an array
           this.isLoading = false;
-          console.log(`${this.apiEndpoint} options:`, this.options); // Debug log
+          console.log(`${this.apiEndpoint} options:`, this.options);
         },
         error: (error) => {
           this.error = `Failed to load ${this.label} options`;

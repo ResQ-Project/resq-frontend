@@ -1,9 +1,22 @@
 .form {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    gap: 16px;
+    padding: 16px;
+    flex-grow: 1;
   }
   
   button {
     align-self: flex-end;
   }
+
+  .form-buttons {
+    position: sticky;
+    bottom: 0;
+    padding: 16px;
+    display: flex;
+    justify-content:center;
+    z-index: 10;
+    border-top: 1px solid #e0e0e09e;
+  }
+

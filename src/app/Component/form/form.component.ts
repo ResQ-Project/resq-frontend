@@ -7,13 +7,17 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'resq-frontend-form',
-  imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatChipsModule, MatRadioModule, MatSelectModule, MatCardModule, CommonModule],
+  imports: [MatFormFieldModule, MatInputModule, MatAutocompleteModule, MatChipsModule, MatRadioModule, MatSelectModule, MatCardModule, CommonModule, MatButtonModule, ReactiveFormsModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss'
 })
 export class FormComponent {
   @Input() title: string = "Default Label";
+
+  @Input() formGroup!: FormGroup;
 }

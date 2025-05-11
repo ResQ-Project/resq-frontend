@@ -33,8 +33,12 @@ export class MasterService{
         return this.http.get<DropdownOption[]>(`${this.baseUrl}/Doctors`); //dropdown options for assigned doctor
       }
 
-      addPatient(patient: Patient): Observable<Patient> {
-        return this.http.post<Patient>(`${this.baseUrl}/patient`, patient);
+    addPatient(patient: Patient): Observable<Patient> {
+        return this.http.post<Patient>(`${this.baseUrl}/patient`, patient); //Submit button - form
+      }
+
+    getHospitalResources(endpoint: string): Observable<string[]> {
+        return this.http.get<string[]>(`${this.baseUrl}/Doctors`); //Add Resources to the form
       }
 
 }

@@ -19,7 +19,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@a
 })
 export class FormFieldComponent implements ControlValueAccessor {
   @Input() label: string = "Default Label";
-  //@Input() formControlName: string = '';
+  @Input() formControlName: string = '';
 
   value: string = '';
   disabled: boolean = false;

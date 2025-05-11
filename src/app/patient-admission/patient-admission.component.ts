@@ -1,7 +1,6 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { FormComponent } from '../Component/form/form.component';
 import { FormFieldComponent } from '../Component/form-field/form-field.component';
-import { HalfFormFieldComponent } from '../Component/half-form-field/half-form-field.component';
 import { DropDownComponent } from '../Component/drop-down/drop-down.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,18 +9,24 @@ import { DropdownOption } from '../Model/DropDownOption';
 import { Patient } from '../Model/Patient';
 import { MatButtonModule } from '@angular/material/button';
 import { SelectOptionsComponent } from '../Component/select-options/select-options.component';
+import { RadioButtonComponent } from '../Component/radio-button/radio-button.component';
+import { RadioOption } from '../Model/RadioOption';
+import { FormButtonsComponent } from '../Component/form-buttons/form-buttons.component';
+import { ChipsAutocompleteComponent } from '../chips-autocomplete/chips-autocomplete.component';
 
 @Component({
   selector: 'resq-frontend-patient-admission',
   imports: [
     FormComponent, 
-    FormFieldComponent, 
-    HalfFormFieldComponent, 
+    FormFieldComponent,  
     DropDownComponent, 
     ReactiveFormsModule,
     CommonModule,
     MatButtonModule,
-    SelectOptionsComponent
+    SelectOptionsComponent,
+    RadioButtonComponent,
+    FormButtonsComponent,
+    ChipsAutocompleteComponent
   ],
   templateUrl: './patient-admission.component.html',
   styleUrl: './patient-admission.component.scss'
@@ -44,7 +49,16 @@ export class PatientAdmissionComponent implements OnInit {
 
   criticalityOptions = ['High', 'Medium', 'Low']
 
-  @Output() patientAdded = new EventEmitter<Patient>(); // Emit new patient
+  statusOptions: RadioOption[] = [
+    { value: 'admitted', label: 'Admitted' },
+    { value: 'discharged', label: 'Discharged' },
+  ];
+
+  selectedStatus: string = this.statusOptions[0].value;
+
+
+  @Output() patientAdded = new EventEmitter<Patient>();
+  @Output() closeClicked = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder , private masterService: MasterService) {
     this.patientForm = this.fb.group({
@@ -91,6 +105,14 @@ export class PatientAdmissionComponent implements OnInit {
     this.patientForm.get('assignedDoctor')?.setValue(value);
   }
 
+  onStatusChange(value: string) {
+    this.patientForm.get('admissionStatus')?.setValue(value);
+  }
+
+  onResourcesChange(value: any) {
+    this.patientForm.get('resourceId')?.setValue(value);
+  }
+
   onSubmit() {
     if (this.patientForm.valid) {
       const patient: Patient = {
@@ -119,4 +141,9 @@ export class PatientAdmissionComponent implements OnInit {
       });
     }
   }
+
+  onClose() {
+    this.closeClicked.emit();
+  }
+
 }

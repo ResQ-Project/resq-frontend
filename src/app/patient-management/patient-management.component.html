@@ -1,13 +1,3 @@
-<!---
-<resq-frontend-table [dataSource]="patientlist" [columns]="columns">
-    <resq-frontend-button table-actions label="Add Patient"> </resq-frontend-button>
-</resq-frontend-table>
-
-
-<resq-frontend-patient-admission > </resq-frontend-patient-admission>
--->
-
-<!-- src/app/patient-management/patient-management.component.html -->
 
 <div class="patient-management-container">
     
@@ -19,23 +9,19 @@
             <resq-frontend-button table-actions
             label="Add Patient"
             (click)="showAdmissionForm()">
-            </resq-frontend-button>
-
+            </resq-frontend-button>       
     </resq-frontend-table>
   
-  
     <!-- Patient admission form -->
-    <resq-frontend-patient-admission
-      *ngIf="showForm"
-      (patientAdded)="onPatientAdded($event)">
-    </resq-frontend-patient-admission>
+    <ng-container *ngIf="showForm">
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-content">
+          <resq-frontend-patient-admission
+            (patientAdded)="onPatientAdded($event)">
+          </resq-frontend-patient-admission>
+        </div>
+      </div>
+    </ng-container>
 
-    <!-- Dropdown for filtering by criticality 
-    <resq-frontend-drop-down
-      label="Filter by Criticality"
-      apiEndpoint="criticality"
-      (selectionChange)="onCriticalityFilterChange($event)">
-    </resq-frontend-drop-down>
-  -->
-    
   </div>

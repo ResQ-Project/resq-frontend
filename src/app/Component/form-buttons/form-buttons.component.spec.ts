@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HalfFormFieldComponent } from './half-form-field.component';
+import { FormButtonsComponent } from './form-buttons.component';
 
-describe('HalfFormFieldComponent', () => {
-  let component: HalfFormFieldComponent;
-  let fixture: ComponentFixture<HalfFormFieldComponent>;
+describe('FormButtonsComponent', () => {
+  let component: FormButtonsComponent;
+  let fixture: ComponentFixture<FormButtonsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HalfFormFieldComponent]
+      imports: [FormButtonsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HalfFormFieldComponent);
+    fixture = TestBed.createComponent(FormButtonsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

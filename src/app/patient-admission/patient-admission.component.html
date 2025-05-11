@@ -1,11 +1,19 @@
-<resq-frontend-form title="Patient Admission Form" (ngSubmit)="onSubmit()" class="form">
+<resq-frontend-form title="Patient Admission Form" [formGroup]="patientForm" (ngSubmit)="onSubmit()" class="form">
 
-            <resq-frontend-select-options
+        <resq-frontend-radio-button
+        form-field-actions
+        label="Patient Status"
+        [options]="statusOptions"
+        formControlName="admissionStatus"
+        (selectionChange)="onStatusChange($event)"
+        ></resq-frontend-radio-button>
+
+        <resq-frontend-select-options
             form-field-actions
             label="Ward Number"
             [options]="wardNumberOptions"
             formControlName="wardNumber">
-            </resq-frontend-select-options>
+        </resq-frontend-select-options>
 
         <resq-frontend-form-field form-field-actions label="NIC" formControlName="nic"></resq-frontend-form-field>
     
@@ -24,6 +32,14 @@
 
         <resq-frontend-form-field form-field-actions label="Address" formControlName="address"></resq-frontend-form-field>
         <resq-frontend-form-field form-field-actions label="Contact No" formControlName="contactNo"></resq-frontend-form-field>
+
+        
+        <resq-frontend-drop-down
+            form-field-actions
+            label="Assigned Doctors"
+            apiEndpoint="doctors"
+            (selectionChange)="onAssignedDoctorChange($event)">
+        </resq-frontend-drop-down>
     
         <resq-frontend-select-options
         form-field-actions
@@ -33,26 +49,20 @@
         </resq-frontend-select-options>
 
         
+    
+        <resq-frontend-form-field form-field-actions label="Resource" formControlName="resourceId"></resq-frontend-form-field>
 
-        <!-- <resq-frontend-drop-down
-        form-field-actions
-        label="Admission Status"
-        apiEndpoint="admission-status"
-        (selectionChange)="onAdmissionStatusChange($event)">
-        </resq-frontend-drop-down>
-    -->
-
-        <resq-frontend-drop-down
+        <resq-frontend-chips-autocomplete
             form-field-actions
-            label="Assigned Doctors"
-            apiEndpoint="doctors"
-            (selectionChange)="onAssignedDoctorChange($event)">
-        </resq-frontend-drop-down>
+            label="Hospital Resources"
+            apiEndpoint="resources"
+            (selectionChange)="onResourcesChange($event)">
+        </resq-frontend-chips-autocomplete>
     
-        <resq-frontend-form-field form-field-actions label="Resource ID" formControlName="resourceId"></resq-frontend-form-field>
-    
-        <resq-frontend-form-field form-field-actions label="Allocated Units" formControlName="allocatedUnits"></resq-frontend-form-field>
-        
-        <button mat-raised-button color="primary" type="submit" [disabled]="patientForm.invalid">Submit</button>
+        <resq-frontend-form-field form-field-actions label="Allocated Number of Units" formControlName="allocatedUnits"></resq-frontend-form-field>
+
+        <div class="form-buttons" form-field-actions>
+            <resq-frontend-form-buttons  (submitClicked)="onSubmit()" (closeClicked)="onClose()"></resq-frontend-form-buttons>
+        </div>
 
 </resq-frontend-form>
