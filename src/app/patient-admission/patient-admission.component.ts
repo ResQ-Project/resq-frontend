@@ -79,7 +79,7 @@ export class PatientAdmissionComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.masterService.getDropdownOptions('assignedDoctor').subscribe({
+    this.masterService.getDoctorsOptions().subscribe({
       next: (options) => {
         this.doctorsOptions = options;
       },

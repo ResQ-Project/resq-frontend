@@ -3,8 +3,8 @@
     <mat-select [(value)]="selectedValue" (selectionChange)="onSelectionChange($event)" [disabled]="isLoading || !!error">
         <mat-option *ngIf="isLoading" [value]="null" disabled>Loading...</mat-option>
         <mat-option *ngIf="error" [value]="null" disabled>{{ error }}</mat-option>
-        <mat-option *ngFor="let option of options" [value]="option.value">
-          {{ option.display }}
+        <mat-option *ngFor="let option of options" [value]="option.staff_id">
+         Dr. {{ option.first_name }} {{ option.last_name }}
         </mat-option>
       </mat-select>
     </mat-form-field>

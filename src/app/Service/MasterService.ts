@@ -29,9 +29,9 @@ export class MasterService{
         return this.http.get<Staff[]>(`${this.baseUrl}/staff`);//Staff data to table
     }
 
-    getDropdownOptions(endpoint: string): Observable<DropdownOption[]> {
-        return this.http.get<DropdownOption[]>(`${this.baseUrl}/Doctors`); //dropdown options for assigned doctor
-      }
+    getDoctorsOptions(): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}/staffservice/api/v1/staff/getAllDoctors`); //dropdown options for assigned doctor
+    }
 
     addPatient(patient: Patient): Observable<Patient> {
         return this.http.post<Patient>(`${this.baseUrl}/patient`, patient); //Submit button - form
