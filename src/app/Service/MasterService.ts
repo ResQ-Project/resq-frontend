@@ -14,11 +14,11 @@ export class MasterService{
 
     constructor(private http:HttpClient){}
 
-    private baseUrl = 'http://localhost:3000'; // Base URL for your API
+    private baseUrl = 'http://localhost:8765'; // Base URL for your API
 
 
     GetPatient():Observable<Patient[]>{
-        return this.http.get<Patient[]>(`${this.baseUrl}/patient`);//patient data to table
+        return this.http.get<Patient[]>(`${this.baseUrl}/patientservice/api/v1/patient/getAllPatientsOfSingleWard/1`);//patient data to table
     }
 
     GetResource():Observable<Resource[]>{

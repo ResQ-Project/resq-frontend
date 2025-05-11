@@ -2,3 +2,132 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.dashboard-container {
+    padding: 2rem;
+    background: linear-gradient(to bottom, #eff6ff, #f9fafb);
+    min-height: 100vh;
+    font-family: 'Helvetica', sans-serif;
+  
+    .dashboard-header {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: bold;
+      color: #2563eb;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05rem;
+    }
+  
+    .dashboard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+  
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      height: 250px;
+      background-color: white;
+  
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+  
+      &-header {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
+      }
+  
+      &-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+  
+      &-footer {
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+  
+      &.patients-card {
+        border-top: 4px solid #2563eb;
+      }
+  
+      &.resources-card {
+        border-top: 4px solid #16a34a;
+      }
+  
+      &.staff-count-card {
+        border-top: 4px solid #7c3aed;
+      }
+  
+      &.staff-names-card {
+        border-top: 4px solid #ec4899;
+      }
+    }
+  
+    .card-list {
+      list-style-type: none;
+      padding: 0;
+      font-size: 0.85rem;
+      color: #374151;
+      margin-top: 1rem;
+      line-height: 1.5;
+  
+      li {
+        margin-bottom: 0.5rem;
+      }
+    }
+  
+    .recent-admissions {
+      .recent-admissions-header {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #374151;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+  
+      .recent-admissions-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 0.75rem;
+        overflow: hidden;
+  
+        th, td {
+          padding: 1rem;
+          text-align: left;
+          font-size: 1rem;
+        }
+  
+        thead {
+          background-color: #ebf8ff;
+          color: #2563eb;
+        }
+  
+        tbody {
+          tr {
+            &:hover {
+              background-color: #f0f8ff;
+            }
+  
+            td {
+              color: #374151;
+            }
+          }
+        }
+      }
+    }
+  }
+  

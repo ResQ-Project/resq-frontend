@@ -25,7 +25,7 @@ import { PatientAdmissionComponent } from '../patient-admission/patient-admissio
 })
 export class PatientManagementComponent implements OnInit {
 
-  patientList !: Patient[];
+  patientList !: any[];
   showForm: boolean = false;
 
   columns: ColumnDefinition[] = [
@@ -56,8 +56,8 @@ export class PatientManagementComponent implements OnInit {
 
     fetchPatients() {
       this.service.GetPatient().subscribe({
-        next: (res) => {
-          this.patientList = res;
+        next: (res:any) => {
+          this.patientList = res.data;
         },
         error: (error) => {
           console.error('Error fetching patients:', error);
