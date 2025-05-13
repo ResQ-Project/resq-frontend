@@ -14,8 +14,8 @@ import { ButtonComponent } from '../Component/button/button.component';
   styleUrl: './resource-management.component.scss'
 })
 export class ResourceManagementComponent {
-    resourcelist !: Resource[];
-    columns: ColumnDefinition[] = [
+    resourcelist !: any[];
+    columns: any[] = [
       { columnDef: 'resource_id', header: 'Resource ID', cell: (element: Resource) => `${element.resource_id}` },
           { columnDef: 'category', header: 'Category', cell: (element: Resource) => `${element.category}` },
           { columnDef: 'fullCount', header: 'Total Count', cell: (element: Resource) => `${element.fullCount}` },
@@ -25,7 +25,7 @@ export class ResourceManagementComponent {
 
     constructor(private service:MasterService){
         this.service.GetResource().subscribe(res=>{
-          this.resourcelist = res;
+          this.resourcelist = res.data;
         })
        }
 }

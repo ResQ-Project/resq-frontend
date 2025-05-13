@@ -21,12 +21,12 @@ export class MasterService{
         return this.http.get<Patient[]>(`${this.baseUrl}/patientservice/api/v1/patient/getAllPatientsOfSingleWard/1`);//patient data to table
     }
 
-    GetResource():Observable<Resource[]>{
-        return this.http.get<Resource[]>(`${this.baseUrl}/resources`);//Resource data to table
+    GetResource():Observable<any>{
+        return this.http.get<any>(`${this.baseUrl}/resourceservice/api/v1/resource/getAllResources`);//Resource data to table
     }
 
-    GetStaff():Observable<Staff[]>{
-        return this.http.get<Staff[]>(`${this.baseUrl}/staff`);//Staff data to table
+    GetStaff():Observable<any>{
+        return this.http.get<any>(`${this.baseUrl}/staffservice/api/v1/staff/getAllStaff`);//Staff data to table
     }
 
     getDoctorsOptions(): Observable<any> {

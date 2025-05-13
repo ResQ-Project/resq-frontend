@@ -14,8 +14,8 @@ import { ButtonComponent } from '../Component/button/button.component';
   styleUrl: './staff-management.component.scss'
 })
 export class StaffManagementComponent {
-  stafflist !: Staff[];
-  columns: ColumnDefinition[] = [
+  stafflist !: any[];
+  columns: any[] = [
         { columnDef: 'staff_id', header: 'Staff ID', cell: (element: Staff) => `${element.staff_id}` },
         { columnDef: 'national_id', header: 'NIC', cell: (element: Staff) => `${element.national_id}` },
         { columnDef: 'first_name', header: 'First Name', cell: (element: Staff) => `${element.first_name}` },
@@ -28,7 +28,7 @@ export class StaffManagementComponent {
 
       constructor(private service:MasterService){
           this.service.GetStaff().subscribe(res=>{
-            this.stafflist = res;
+            this.stafflist = res.data;
           })
          }
 
