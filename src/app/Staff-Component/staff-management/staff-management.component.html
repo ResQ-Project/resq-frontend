@@ -1,5 +1,21 @@
-<resq-frontend-table [dataSource]="stafflist" [columns]="columns">
+<div class="staff-management-container">
+  <!-- Staff table -->
+  <resq-frontend-table [dataSource]="stafflist" [columns]="columns">
+    <resq-frontend-button
+      table-actions
+      label="Add Staff Member"
+      (click)="showAdmissionForm()"
+    >
+    </resq-frontend-button>
+  </resq-frontend-table>
 
-    <resq-frontend-button table-actions label="Add Staff Member"></resq-frontend-button>
-
-</resq-frontend-table>
+  <!-- Staff Member Add form -->
+  <ng-container *ngIf="showForm">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <resq-frontend-staff-add (staffAdded)="onStaffAdd($event)"></resq-frontend-staff-add>
+      </div>
+    </div>
+  </ng-container>
+</div>

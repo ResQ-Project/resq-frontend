@@ -33,16 +33,19 @@ export class MasterService{
         return this.http.get<any>(`${this.baseUrl}/staffservice/api/v1/staff/getAllDoctors`); //dropdown options for assigned doctor
     }
 
+    getResourcesOptions(): Observable<any> {
+        return this.http.get<any>(`${this.baseUrl}/resourceservice/api/v1/resource/getAllResources`); //dropdown options for assigned doctor
+    }
+
     addPatient(patient: Patient): Observable<Patient> {
         return this.http.post<Patient>(`${this.baseUrl}/patientservice/api/v1/patient/savePatient`, patient); //Submit button - form
     }
-
 
     addResource(resource: Resource):Observable<Resource>{
         return this.http.post<Resource>(`${this.baseUrl}/resourceservice/api/v1/resource/saveResource`, resource); //Submit button - form
     } 
 
-    getResourcesOptions(): Observable<any> {
-        return this.http.get<any>(`${this.baseUrl}/resourceservice/api/v1/resource/getAllResources`); //dropdown options for assigned doctor
-    }
+    addStaffMember(staffMember: Staff):Observable<Staff>{
+        return this.http.post<Staff>(`${this.baseUrl}/staffservice/api/v1/staff/createStaffMember`, staffMember); //Submit button - form
+    } 
 }

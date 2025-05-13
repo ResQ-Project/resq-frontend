@@ -1,0 +1,45 @@
+<mat-card>
+  <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Staff ID</mat-label>
+        <input matInput formControlName="staff_id" type="number"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>National ID</mat-label>
+        <input matInput formControlName="national_id" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="last_name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" type="number"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Occupation</mat-label>
+        <input matInput formControlName="occupation"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Speciality</mat-label>
+        <input matInput formControlName="speciality"/>
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-stroked-button color="warn" type="button" (click)="onClose()">Cancel</button>
+    </div>
+  </form>
+</mat-card>
