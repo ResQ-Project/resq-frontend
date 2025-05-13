@@ -39,7 +39,7 @@ export class MasterService{
 
 
     addResource(resource: Resource):Observable<Resource>{
-        return this.http.post<Resource>(`${this.baseUrl}/patientservice/api/v1/patient/savePatient`, resource); //Submit button - form
+        return this.http.post<Resource>(`${this.baseUrl}/resourceservice/api/v1/resource/saveResource`, resource); //Submit button - form
     } 
 
     getResourcesOptions(): Observable<any> {

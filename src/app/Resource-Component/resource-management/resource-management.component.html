@@ -1,5 +1,21 @@
-<resq-frontend-table [dataSource]="resourcelist" [columns]="columns">
+<div class="resource-management-container">
+  <!-- Patient table -->
+  <resq-frontend-table [dataSource]="resourcelist" [columns]="columns">
+    <resq-frontend-button
+      table-actions
+      label="Add Resource"
+      (click)="showAdmissionForm()"
+    >
+    </resq-frontend-button>
+  </resq-frontend-table>
 
-    <resq-frontend-button table-actions label="Add Resource"></resq-frontend-button>
-
-</resq-frontend-table>
+  <!-- Resource Add form -->
+  <ng-container *ngIf="showForm">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container">
+      <div class="modal-content">
+        <resq-frontend-resource-add (resourceAdded)="onResourcesAdd($event)"></resq-frontend-resource-add>
+      </div>
+    </div>
+  </ng-container>
+</div>

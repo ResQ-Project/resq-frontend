@@ -1,0 +1,30 @@
+<mat-card>
+  <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Resource ID</mat-label>
+        <input matInput formControlName="resource_id" type="number"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <input matInput formControlName="category" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Full Count</mat-label>
+        <input matInput formControlName="fullCount" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Available Units</mat-label>
+        <input matInput type="number" formControlName="availableUnits" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-stroked-button color="warn" type="button" (click)="onClose()">Cancel</button>
+    </div>
+  </form>
+</mat-card>
