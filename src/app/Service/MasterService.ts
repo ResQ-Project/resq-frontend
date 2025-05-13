@@ -35,7 +35,12 @@ export class MasterService{
 
     addPatient(patient: Patient): Observable<Patient> {
         return this.http.post<Patient>(`${this.baseUrl}/patientservice/api/v1/patient/savePatient`, patient); //Submit button - form
-      }
+    }
+
+
+    addResource(resource: Resource):Observable<Resource>{
+        return this.http.post<Resource>(`${this.baseUrl}/patientservice/api/v1/patient/savePatient`, resource); //Submit button - form
+    } 
 
     getResourcesOptions(): Observable<any> {
         return this.http.get<any>(`${this.baseUrl}/resourceservice/api/v1/resource/getAllResources`); //dropdown options for assigned doctor

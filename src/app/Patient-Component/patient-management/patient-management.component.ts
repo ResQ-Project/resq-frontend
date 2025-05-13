@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { TableComponent } from '../Component/table/table.component';
+import { TableComponent } from '../../Component/table/table.component';
 import { MatSortModule } from '@angular/material/sort';
-import { ColumnDefinition } from '../Model/ColumnDefinition';
-import { Patient } from '../Model/Patient';
-import { MasterService } from '../Service/MasterService';
+import { ColumnDefinition } from '../../Model/ColumnDefinition';
+import { Patient } from '../../Model/Patient';
+import { MasterService } from '../../Service/MasterService';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../Component/button/button.component';
+import { ButtonComponent } from '../../Component/button/button.component';
 import { PatientAdmissionComponent } from '../patient-admission/patient-admission.component';
 
 

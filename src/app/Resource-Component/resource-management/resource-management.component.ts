@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { TableComponent } from '../Component/table/table.component';
-import { ColumnDefinition } from '../Model/ColumnDefinition';
-import { Resource } from '../Model/Resource';
-import { MasterService } from '../Service/MasterService';
-import { ButtonComponent } from '../Component/button/button.component';
+import { TableComponent } from '../../Component/table/table.component';
+import { ColumnDefinition } from '../../Model/ColumnDefinition';
+import { Resource } from '../../Model/Resource';
+import { MasterService } from '../../Service/MasterService';
+import { ButtonComponent } from '../../Component/button/button.component';
 
 @Component({
   selector: 'resq-frontend-resource-management',

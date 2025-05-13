@@ -1,6 +1,6 @@
-export interface Resource{
-    resource_id: string,
-    category: string,
-    fullCount: number,
-    availableUnits:number
+export interface Resource {
+    resource_id: number; 
+    category: string;
+    fullCount: number;
+    availableUnits: number;
 }
