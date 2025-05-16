@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TableComponent } from '../../Component/table/table.component';
 import { MatSortModule } from '@angular/material/sort';
@@ -8,7 +8,7 @@ import { MasterService } from '../../Service/MasterService';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../Component/button/button.component';
 import { PatientAdmissionComponent } from '../patient-admission/patient-admission.component';
-
+import { SharedService } from '../../Service/shared.service';
 
 @Component({
   selector: 'resq-frontend-patient-management',
@@ -21,11 +21,10 @@ import { PatientAdmissionComponent } from '../patient-admission/patient-admissio
     PatientAdmissionComponent
   ],
   templateUrl: './patient-management.component.html',
-  styleUrl: './patient-management.component.scss'
+  styleUrls: ['./patient-management.component.scss']
 })
 export class PatientManagementComponent implements OnInit {
-
-  patientList !: any[];
+  patientList!: any[];
   showForm: boolean = false;
 
   columns: ColumnDefinition[] = [
@@ -39,47 +38,47 @@ export class PatientManagementComponent implements OnInit {
     { columnDef: 'criticality', header: 'Criticality', cell: (element: Patient) => `${element.criticality}` },
     { columnDef: 'admission_status', header: 'Admission Status', cell: (element: Patient) => `${element.admission_status}` },
     { columnDef: 'assigned_doctor', header: 'Assigned Doctor', cell: (element: Patient) => `${element.assigned_doctor}` },
-    // { columnDef: 'resourceId', header: 'Resource ID', cell: (element: Patient) => `${element.resourceId}` },
-    // { columnDef: 'allocatedUnits', header: 'Resource Count', cell: (element: Patient) => `${element.allocatedUnits}` },
     { columnDef: 'actions', header: 'Actions', cell: () => '' },
-  ]
+  ];
 
-  constructor(private service:MasterService){}
+  constructor(private service: MasterService, private sharedService: SharedService) {}
 
-    ngOnInit() {
+  ngOnInit() {
+    this.fetchPatients();
+  }
+
+  fetchPatients() {
+    this.service.GetPatient().subscribe({
+      next: (res: any) => {
+        this.patientList = res.data;
+      },
+      error: (error) => {
+        console.error('Error fetching patients:', error);
+      }
+    });
+  }
+
+  onCriticalityFilterChange(value: string) {
+    if (value) {
+      this.patientList = this.patientList.filter(patient => patient.criticality === value);
+    } else {
       this.fetchPatients();
     }
+  }
 
-    fetchPatients() {
-      this.service.GetPatient().subscribe({
-        next: (res:any) => {
-          this.patientList = res.data;
-        },
-        error: (error) => {
-          console.error('Error fetching patients:', error);
-        }
-      });
-    }
+  showAdmissionForm() {
+    this.showForm = !this.showForm;
+    this.sharedService.setMenuState(false); // Close menu and drawer
+  }
 
-    onCriticalityFilterChange(value: string) {
-      if (value) {
-        this.patientList = this.patientList.filter(patient => patient.criticality === value);
-      } else {
-        this.fetchPatients();
-      }
-    }
+  onPatientAdded(patient: Patient) {
+    this.patientList = [...this.patientList, patient];
+    this.showForm = false;
+    this.sharedService.setMenuState(false); // Keep menu closed after submission
+  }
 
-    showAdmissionForm() {
-      this.showForm = !this.showForm;
-    }
-    
-    onPatientAdded(patient: Patient) {
-      this.patientList = [...this.patientList, patient];
-      this.showForm = false; // Hide form after submission
-    }
-
-    onFormClose() {
-      this.showForm = false;
-    }
-
+  onFormClose() {
+    this.showForm = false;
+    this.sharedService.setMenuState(true); // Open menu and drawer
+  }
 }
