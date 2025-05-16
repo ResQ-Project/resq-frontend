@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit} from '@angular/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TableComponent } from '../../Component/table/table.component';
 import { MatSortModule } from '@angular/material/sort';
@@ -78,7 +78,7 @@ export class PatientManagementComponent implements OnInit {
       this.showForm = false; // Hide form after submission
     }
 
-    onClose() {
+    onFormClose() {
       this.showForm = false;
     }
 

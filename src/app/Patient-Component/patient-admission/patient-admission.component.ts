@@ -30,6 +30,8 @@ import { MasterService } from '../../Service/MasterService';
 })
 export class PatientAdmissionComponent implements OnInit {
   patientForm!: FormGroup;
+  showForm: boolean = false;
+
   doctorsOptions: any[] = [];
   resourceOptions: any[] = [];
 
@@ -144,7 +146,7 @@ export class PatientAdmissionComponent implements OnInit {
 
   }
 
-  onClose(): void {
-    this.closeClicked.emit();
-  }
+  onClose() {
+      this.closeClicked.emit();
+    }
 }

@@ -18,7 +18,8 @@
       <div class="modal-container">
         <div class="modal-content">
           <resq-frontend-patient-admission
-            (patientAdded)="onPatientAdded($event)">
+            (patientAdded)="onPatientAdded($event)"
+            (closeClicked)="onFormClose()">
           </resq-frontend-patient-admission>
         </div>
       </div>

@@ -1,24 +1,18 @@
-.form {
+mat-card-header{
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 25px;
+    font-weight: 600;
+    color: #365679;
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 16px;
-    flex-grow: 1;
-  }
-  
-  button {
-    align-self: flex-end;
-  }
+    justify-content: center;
+}
 
-  .form-buttons {
-    position: sticky;
-    bottom: 0;
-    padding: 16px;
-    display: flex;
-    justify-content:center;
-    z-index: 10;
-    border-top: 1px solid #e0e0e09e;
-  }
+mat-form-field{
+  width: 46%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
 
 .resources-section {
     margin-top: 1rem;
@@ -33,4 +27,17 @@
 
 .resource-select {
     min-width: 200px;
+}
+
+.resource-card{
+  margin: 2%;
+  background-color: #edeff1af;
+}
+
+.button-array{
+  margin-top: 8%;
+  margin-bottom: 3%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
