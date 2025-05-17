@@ -1,45 +1,73 @@
 <mat-card>
+
+  <mat-card-header class="form-title"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCSh4e0_PE6Jw3Nhki3eKDatGFxfwb41FOg&s" alt="Logo" class="toolbar-logo">
+    Staff Member Form 
+  </mat-card-header>
+
   <form [formGroup]="staffForm" (ngSubmit)="onSubmit()">
     <div class="form-grid">
-      <mat-form-field appearance="outline">
+
+      <mat-card class="card">
+        <mat-card-header> Personal Details</mat-card-header>
+
+      <mat-card-content> 
+       
+            <mat-form-field >
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="first_name" />
+           </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name" />
+          </mat-form-field>
+        
+          <mat-form-field >
+            <mat-label>National ID</mat-label>
+            <input matInput formControlName="national_id" />
+          </mat-form-field>
+
+          <mat-form-field >
+            <mat-label>Age</mat-label>
+            <input matInput formControlName="age" type="number"/>
+          </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header> Professional Details</mat-card-header>
+
+    <mat-card-content>
+
+        <mat-form-field>
         <mat-label>Staff ID</mat-label>
         <input matInput formControlName="staff_id" type="number"/>
       </mat-form-field>
+      
+        <mat-form-field >
+          <mat-label>Occupation</mat-label>
+          <input matInput formControlName="occupation"/>
+        </mat-form-field>
 
-      <mat-form-field appearance="outline">
-        <mat-label>National ID</mat-label>
-        <input matInput formControlName="national_id" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="first_name" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Last Name</mat-label>
-        <input matInput formControlName="last_name" />
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Age</mat-label>
-        <input matInput formControlName="age" type="number"/>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Occupation</mat-label>
-        <input matInput formControlName="occupation"/>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
+      <mat-form-field >
         <mat-label>Speciality</mat-label>
         <input matInput formControlName="speciality"/>
       </mat-form-field>
-    </div>
 
-    <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-      <button mat-stroked-button color="warn" type="button" (click)="onClose()">Cancel</button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+    <div class="button-array">
+      <button mat-raised-button color="primary" type="submit">
+        <mat-icon>check</mat-icon>
+        Submit
+      </button>
+
+      <button mat-raised-button color="warn" type="button" (click)="onClose()">
+        <mat-icon>cancel</mat-icon>
+        Cancel
+      </button>
     </div>
   </form>
 </mat-card>
