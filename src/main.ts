@@ -5,6 +5,10 @@ import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
 import { provideHttpClient } from '@angular/common/http';
+import { Chart } from 'chart.js';
+import { registerables } from 'chart.js';
+
+Chart.register(...registerables); // Register all Chart.js components, including scales
 
 bootstrapApplication(AppComponent, 
   {

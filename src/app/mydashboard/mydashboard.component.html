@@ -1,0 +1,152 @@
+<div class="dashboard-container">
+  <!-- Dashboard Header -->
+    <div class="dashboard-header">
+        <h1 class="mat-elevation-z5">
+            🏥 Hospital Resource Management Dashboard
+        </h1>
+    </div>
+  
+
+  <!-- Dashboard Cards Section -->
+  <mat-grid-list cols="4" rowHeight="1:1.2" gutterSize="16" class="dashboard-cards">
+    <!-- Patients Card -->
+    <mat-grid-tile>
+      <mat-card class="patients-card">
+        <mat-card-header>
+          <mat-card-title>Total Patients</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-value">{{ totalPatients }}</div>
+        </mat-card-content>
+        <mat-card-footer>
+          <p>Currently admitted</p>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Resources Card -->
+    <mat-grid-tile>
+      <mat-card class="resources-card">
+        <mat-card-header>
+          <mat-card-title>Available Resources</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let resource of resources">
+              <mat-icon matListItemIcon>{{ resource.icon }}</mat-icon>
+              {{ resource.name }}: {{ resource.count }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Staff Count Card -->
+    <mat-grid-tile>
+      <mat-card class="staff-count-card">
+        <mat-card-header>
+          <mat-card-title>Total Staff</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-value">{{ totalStaff }}</div>
+        </mat-card-content>
+        <mat-card-footer>
+          <p>All departments</p>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+
+    <!-- Staff Names Card -->
+    <mat-grid-tile>
+      <mat-card class="staff-names-card">
+        <mat-card-header>
+          <mat-card-title>On Duty Staff</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let staff of onDutyStaff">
+              <mat-icon matListItemIcon>person_outline</mat-icon>
+              {{ staff }}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+   <!-- Charts Section -->
+  <div class="charts-container mat-elevation-z2">
+    <div class="charts-grid" >
+    <h2 class="charts-header" style="grid-column: span 2;">
+      <mat-icon>insights</mat-icon> 
+      Patient Analytics
+    </h2>
+    </div>
+   
+    <div class="charts-grid">
+      <!-- Bar Graph: Patient Admissions -->
+      <div class="chart-card">
+        <h3 class="chart-title">Admissions (Last 7 Days)</h3>
+        <canvas baseChart
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [type]="'bar'"
+                class="chart-canvas"></canvas>
+      </div>
+
+      <!-- Pie Chart: Patients by Disease -->
+      <div class="chart-card">
+        <h3 class="chart-title">Patients by Disease</h3>
+        <canvas baseChart
+                [data]="pieChartData"
+                [options]="pieChartOptions"
+                [type]="'pie'"
+                class="chart-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Admissions Table Section -->
+  <div class="recent-admissions mat-elevation-z2">
+    <h2 class="recent-admissions-header">
+      <mat-icon>assignment</mat-icon> Recent Patient Admissions
+    </h2>
+    <mat-table [dataSource]="dataSource" matSort class="recent-admissions-table">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let patient">{{ patient.name }}</mat-cell>
+      </ng-container>
+
+      <!-- Ward Column -->
+      <ng-container matColumnDef="ward">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ward</mat-header-cell>
+        <mat-cell *matCellDef="let patient">{{ patient.ward }}</mat-cell>
+      </ng-container>
+
+      <!-- Criticality Column -->
+      <ng-container matColumnDef="criticality">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Criticality</mat-header-cell>
+        <mat-cell *matCellDef="let patient">
+          <span [ngClass]="{
+            'criticality-high': patient.criticality === 'High',
+            'criticality-medium': patient.criticality === 'Medium',
+            'criticality-low': patient.criticality === 'Low'
+          }">{{ patient.criticality }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Doctor Column -->
+      <ng-container matColumnDef="doctor">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Doctor</mat-header-cell>
+        <mat-cell *matCellDef="let patient">{{ patient.doctor }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+ 
+
+</div>
