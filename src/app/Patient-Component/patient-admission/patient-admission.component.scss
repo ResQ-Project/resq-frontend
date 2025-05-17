@@ -1,11 +1,21 @@
-mat-card-header{
-  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    font-size: 25px;
-    font-weight: 600;
+.form-title{
+
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
     color: #365679;
     margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+
+}
+
+mat-card-header{
+  font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 20px;
+    font-weight: 550;
+    color: #3184dc;
+    margin-bottom: 20px;
+    display: flex;
 }
 
 mat-form-field{
@@ -29,7 +39,7 @@ mat-form-field{
     min-width: 200px;
 }
 
-.resource-card{
+.card{
   margin: 2%;
   background-color: #edeff1af;
 }
@@ -40,4 +50,11 @@ mat-form-field{
   display: flex;
   gap: 10px;
   justify-content: center;
+}
+
+.toolbar-logo {
+    height: 60px; 
+    margin: 0 1px;
+    display: flex;
+    margin-right: 80px;
 }
