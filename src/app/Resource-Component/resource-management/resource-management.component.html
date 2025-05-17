@@ -14,7 +14,10 @@
     <div class="modal-backdrop"></div>
     <div class="modal-container">
       <div class="modal-content">
-        <resq-frontend-resource-add (resourceAdded)="onResourcesAdd($event)"></resq-frontend-resource-add>
+        <resq-frontend-resource-add 
+        (resourceAdded)="onResourcesAdd($event)"
+        (closeClicked)="onFormClose()">
+      </resq-frontend-resource-add>>
       </div>
     </div>
   </ng-container>

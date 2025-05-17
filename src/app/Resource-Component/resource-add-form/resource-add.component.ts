@@ -76,7 +76,7 @@ export class ResourceAddComponent implements OnInit {
 
   }
 
-  onClose(): void {
-    this.closeClicked.emit();
+  onClose() {
+      this.closeClicked.emit();
   }
 }

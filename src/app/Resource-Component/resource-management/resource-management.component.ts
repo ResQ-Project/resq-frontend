@@ -8,6 +8,7 @@ import { MasterService } from '../../Service/MasterService';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../Component/button/button.component';
 import { ResourceAddComponent } from "../resource-add-form/resource-add.component";
+import { SharedService } from '../../Service/shared.service';
 
 @Component({
   selector: 'resq-frontend-resource-management',
@@ -27,7 +28,7 @@ export class ResourceManagementComponent {
     { columnDef: 'actions', header: 'Actions', cell: () => '' },
   ]
 
-  constructor(private service: MasterService) {
+  constructor(private service: MasterService, private sharedService: SharedService) {
     this.service.GetResource().subscribe(res => {
       this.resourcelist = res.data;
     })
@@ -35,15 +36,18 @@ export class ResourceManagementComponent {
 
   showAdmissionForm() {
     this.showForm = !this.showForm;
+    this.sharedService.setMenuState(false);
   }
 
   onResourcesAdd(resource: Resource) {
     this.resourcelist = [...this.resourcelist, resource];
-    this.showForm = false; // Hide form after submission
+    this.showForm = false;
+    this.sharedService.setMenuState(false);
   }
 
-  onClose() {
+  onFormClose() {
     this.showForm = false;
+    this.sharedService.setMenuState(false);
   }
 
 }

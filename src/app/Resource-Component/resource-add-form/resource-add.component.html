@@ -1,6 +1,14 @@
 <mat-card>
+
+  <mat-card-header class="form-title"> 
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBCSh4e0_PE6Jw3Nhki3eKDatGFxfwb41FOg&s" alt="Logo" class="toolbar-logo">
+    Resource Inventory Form 
+  </mat-card-header>
+
   <form [formGroup]="resourceForm" (ngSubmit)="onSubmit()">
+
     <div class="form-grid">
+
       <mat-form-field appearance="outline">
         <mat-label>Resource ID</mat-label>
         <input matInput formControlName="resource_id" type="number"/>
@@ -22,9 +30,15 @@
       </mat-form-field>
     </div>
 
-    <div class="form-actions">
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-      <button mat-stroked-button color="warn" type="button" (click)="onClose()">Cancel</button>
+    <div class="button-array">
+      <button mat-raised-button color="primary" type="submit"> 
+        <mat-icon>check</mat-icon>
+        Submit 
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="onClose()"> 
+        <mat-icon>cancel</mat-icon>
+        Cancel 
+      </button>
     </div>
   </form>
 </mat-card>
