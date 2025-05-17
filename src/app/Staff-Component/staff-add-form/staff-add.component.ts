@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-
 import { MasterService } from '../../Service/MasterService';
 
 @Component({
@@ -30,6 +29,7 @@ import { MasterService } from '../../Service/MasterService';
 })
 export class StaffAddComponent implements OnInit {
   staffForm!: FormGroup;
+  showForm: boolean = false;
  
   @Output() staffAdded = new EventEmitter<any>();
   @Output() closeClicked = new EventEmitter<void>();

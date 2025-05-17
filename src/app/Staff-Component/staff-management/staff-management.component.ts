@@ -8,6 +8,8 @@ import { MasterService } from '../../Service/MasterService';
 import { ButtonComponent } from '../../Component/button/button.component';
 import { CommonModule } from '@angular/common';
 import { StaffAddComponent } from '../staff-add-form/staff-add.component';
+import { SharedService } from '../../Service/shared.service';
+
 
 @Component({
   selector: 'resq-frontend-staff-management',
@@ -30,7 +32,7 @@ export class StaffManagementComponent {
     { columnDef: 'actions', header: 'Actions', cell: () => '' },
   ]
 
-  constructor(private service: MasterService) {
+  constructor(private service: MasterService, private sharedService: SharedService) {
     this.service.GetStaff().subscribe(res => {
       this.stafflist = res.data;
     })
@@ -39,15 +41,18 @@ export class StaffManagementComponent {
 
   showAdmissionForm() {
     this.showForm = !this.showForm;
+    this.sharedService.setMenuState(false);
   }
 
   onStaffAdd(staffMember: Staff) {
     this.stafflist = [...this.stafflist, staffMember];
     this.showForm = false; // Hide form after submission
+    this.sharedService.setMenuState(false); // Keep menu closed after submission
   }
 
-  onClose() {
+  onFormClose() {
     this.showForm = false;
+    this.sharedService.setMenuState(true); // Open menu and drawer
   }
 
 }

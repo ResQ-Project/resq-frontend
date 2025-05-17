@@ -14,7 +14,9 @@
     <div class="modal-backdrop"></div>
     <div class="modal-container">
       <div class="modal-content">
-        <resq-frontend-staff-add (staffAdded)="onStaffAdd($event)"></resq-frontend-staff-add>
+        <resq-frontend-staff-add (staffAdded)="onStaffAdd($event)"
+        (closeClicked)="onFormClose()">
+      </resq-frontend-staff-add>
       </div>
     </div>
   </ng-container>
