@@ -47,7 +47,7 @@ export class ResourceManagementComponent {
 
   onFormClose() {
     this.showForm = false;
-    this.sharedService.setMenuState(false);
+    this.sharedService.setMenuState(true);
   }
 
 }
