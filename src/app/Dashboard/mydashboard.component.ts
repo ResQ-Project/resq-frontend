@@ -78,8 +78,8 @@ export class MydashboardComponent implements OnInit {
       {
         data: [15, 20, 18, 25, 22, 30, 28],
         label: 'Admissions',
-        backgroundColor: ['#36626a', '#588d9c', '#73b1c1', '#f1d18a', '#3f51b5', '#a53f3f', '#ffe9c1'],
-        hoverBackgroundColor: ['#2d4f55', '#48737d', '#5e909e', '#e0c077', '#324196', '#842f2f', '#e0d0a7']
+        backgroundColor: ['#00b8a9', '#588d9c', '#155263', '#f1d18a', '#ff9a3c', '#ef5a5a', '#ffc93c'],
+        hoverBackgroundColor: ['#2d4f55', '#48737d', '#5e909e', '#e0c077', '#f4ce74', '#842f2f', '#e0d0a7']
       }
     ]
   };
